@@ -13,15 +13,17 @@ namespace WebShop.Controllers
     {
         private readonly IGetCars carRepository;
 
-        public HomeController(IGetCars carRepository, ShopCart shopCart)
+        public HomeController(IGetCars carRepository)
         {
             this.carRepository = carRepository ?? throw new ArgumentNullException(nameof(carRepository));
         }
 
         public ViewResult Index()
         {
-            HomeViewModel homeCars=new HomeViewModel();
-            homeCars.FavCars= carRepository.FavoritCArs;
+            HomeViewModel homeCars = new HomeViewModel
+            {
+                FavCars = carRepository.FavoritCArs
+            };
             return View(homeCars);
         }
 

@@ -11,15 +11,13 @@ namespace WebShop.Data.Models
     public class ShopCart
     {
         private ShopDbContext appDbContext;
+        public string ShopCartId { get; set; }
+        public virtual ICollection<ShopCartItem> shopCartItems { get; set; }
 
         public ShopCart(ShopDbContext appDbContext)
         {
             this.appDbContext = appDbContext ?? throw new ArgumentNullException(nameof(appDbContext));
         }
-
-        public string ShopCartId { get; set; }
-        public virtual ICollection<ShopCartItem> shopCartItems { get; set; }
-
         public static ShopCart GetCart(IServiceProvider services)
         {
             var session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
