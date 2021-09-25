@@ -12,7 +12,7 @@ namespace WebShop.Data.Models
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public string Img { get; set; }
-        public ushort Price { get; set; }
+        public int Price { get; set; }
         /// <summary>
         /// флаг отображения для лучших товаров на главной странице
         /// </summary>

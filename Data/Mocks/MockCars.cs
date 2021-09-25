@@ -20,18 +20,39 @@ namespace WebShop.Data.Mocks
                                ShortDescription="Быстрый автомобиль",
                                LongDescription="Красивый быстрый и тихий автомобиль компании тесла",
                                Img="/img/tesla.jpg",
-                               Price =45000,
+                               Price =4545000,
                                IsFavorite= true,
                                Available= true,
                                Category=_carsCategory.GetCategories.First()
                     },
                     new Car
                     {
+                               Name="Nissan Leaf",
+                               ShortDescription="Тихий и экономичный",
+                               LongDescription="Тихий современный автомобиль компании Ниссан авто",
+                               Img="/img/nissan-leaf.jpg",
+                               Price = 2450000,
+                               IsFavorite= true,
+                               Available= true,
+                               Category=_carsCategory.GetCategories.First()
+                    },
+                    new Car
+                    {
+                              Name="Kia x",
+                                    ShortDescription="Стильный современный",
+                                    LongDescription="Надежный корейский автомобиль",
+                                    Img="/img/K5-half.png",
+                                    Price =1370000, IsFavorite= true,
+                                    Available= true,
+                                    Category=_carsCategory.GetCategories.Last()
+                                },
+                    new Car
+                    {
                               Name="Lada Largus",
                                     ShortDescription="Отечественная  ",
                                     LongDescription="Ну едет и едет",
                                     Img="/img/lada.jpg",
-                                    Price =7000, IsFavorite= true,
+                                    Price =700000, IsFavorite= true,
                                     Available= true,
                                     Category=_carsCategory.GetCategories.Last()
                                 }
