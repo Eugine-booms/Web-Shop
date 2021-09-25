@@ -21,7 +21,8 @@ namespace WebShop.Controllers
 
         public IActionResult CheckOut()
         {
-            return View();
+            var order = new Order();
+            return View(order);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace WebShop.Controllers
             };
             return View(obj);
         }
-        public RedirectToActionResult addToCart (int id)
+        public RedirectToActionResult AddToCart (int id)
         {
             var item = carRepository.Cars.FirstOrDefault(i => i.Id == id);
             if (item!=null)
