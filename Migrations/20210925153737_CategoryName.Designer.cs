@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShop.Data;
 
 namespace WebShop.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210925153737_CategoryName")]
+    partial class CategoryName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,50 +65,6 @@ namespace WebShop.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("WebShop.Data.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Adress");
-
-                    b.Property<string>("EMail");
-
-                    b.Property<string>("Name");
-
-                    b.Property<DateTime>("OrderTime");
-
-                    b.Property<string>("Phone");
-
-                    b.Property<string>("Surname");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("WebShop.Data.Models.OrderDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CarId");
-
-                    b.Property<int>("OrderId");
-
-                    b.Property<long>("Price");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderDetails");
-                });
-
             modelBuilder.Entity("WebShop.Data.Models.ShopCartItem", b =>
                 {
                     b.Property<int>("Id")
@@ -131,19 +89,6 @@ namespace WebShop.Migrations
                     b.HasOne("WebShop.Data.Models.Category", "Category")
                         .WithMany("Cars")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WebShop.Data.Models.OrderDetail", b =>
-                {
-                    b.HasOne("WebShop.Data.Models.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WebShop.Data.Models.Order", "Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

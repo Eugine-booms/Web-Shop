@@ -18,7 +18,7 @@ namespace Web_Shop
 
         public Startup(IHostingEnvironment hostEnv)
         {
-            _confstring =new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
+            _confstring = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -44,14 +44,20 @@ namespace Web_Shop
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
-            app.UseMvcWithDefaultRoute();
+            // app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{Id?}");
+                routes.MapRoute(name: "categoryFilter", template: "Cars/{Index}/{category?}", defaults: new {controller="Cars", action="List", category="" });
+            });
             ShopDbContext context;
+
             using (var scop = app.ApplicationServices.CreateScope())
             {
                 context = scop.ServiceProvider.GetRequiredService<ShopDbContext>();
                 DbObjects.Initial(context);
             }
-            
+
         }
     }
 }

@@ -15,8 +15,8 @@ namespace WebShop.Data.Mocks
             {
                 return new List<Category>()
                 {
-                    new Category(){ CategoryName="Электромобили", Description ="Современный вид транспорта"},
-                    new Category(){CategoryName="Класические автомобили", Description="Машины с ДВС"}
+                    new Category(){ Name="Электромобили", Description ="Современный вид транспорта"},
+                    new Category(){Name="Класические автомобили", Description="Машины с ДВС"}
                 };
             }
         }

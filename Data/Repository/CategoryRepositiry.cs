@@ -16,6 +16,6 @@ namespace WebShop.Data.Repository
         {
             this.addDbContext = addDbContext ?? throw new ArgumentNullException(nameof(addDbContext));
         }
-        public IEnumerable<Category> GetCategories => addDbContext.Categories.Include(c=>c.CategoryName);
+        public IEnumerable<Category> GetCategories => addDbContext.Categories.Include(c=>c.Name);
     }
 }
