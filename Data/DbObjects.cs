@@ -35,13 +35,13 @@ namespace WebShop.Data
                 {
                     var list = new Category[]
                     {
-                        new Category(){ CategoryName="Электромобили", Description ="Современный вид транспорта"},
-                        new Category(){CategoryName="Классические автомобили", Description="Машины с ДВС"}
+                        new Category(){ Name="Электромобили", Description ="Современный вид транспорта"},
+                        new Category(){Name="Классические автомобили", Description="Машины с ДВС"}
                     };
                     category = new Dictionary<string, Category>();
                     foreach (Category el in list)
                     {
-                        category.Add(el.CategoryName, el);
+                        category.Add(el.Name, el);
                     }
                 }
                 return category;
