@@ -24,5 +24,25 @@ namespace WebShop.Controllers
             var order = new Order();
             return View(order);
         }
+        [HttpPost]
+        public IActionResult CheckOut(Order order)
+        {
+            shopCart.shopCartItems = shopCart.GetCartItems();
+            if (shopCart.shopCartItems.Count==0)
+            {
+                ModelState.AddModelError("", "Добавьте товары в корзину");
+            }
+            if (ModelState.IsValid)
+            {
+                orders.CreateOrders(order);
+                return RedirectToAction("Complete");
+            }
+            return View(order);
+        }
+        public IActionResult Complete ()
+        {
+            ViewBag.Message = "Заказ успешно обработан";
+            return View();
+        }
     }
 }
